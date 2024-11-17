@@ -1,0 +1,83 @@
+1. Charlie Wells
+2. "pass"
+3. "ferry"
+4. 
+real    1m3.687s
+user    1m3.684s
+sys     0m0.000s
+
+5. 
+2 threads:
+real    0m25.702s
+user    0m51.267s
+sys     0m0.010s
+
+4 threads:
+real    0m14.949s
+user    0m55.673s
+sys     0m0.010s
+
+8 threads:
+real    0m9.266s
+user    1m2.358s
+sys     0m0.000s
+
+13 threads:
+real    0m6.529s
+user    1m13.875s
+sys     0m0.000s
+
+26 threads: NOTE, my computer only has 12 cores
+real    0m6.395s
+user    1m15.089s
+sys     0m0.030s
+
+6. Hashrate(hashes/sec) threads
+    196.1k                 1
+    480.8k                 2
+    829.3k                 4
+    1.33mil                8
+    1.89mil                13
+    unknown                26
+
+7. My code doesnt perfectly scale with 2 threads being twice as fast as 1, 4 threads being twice as fast as 2, and so on, but it definitely follows that pattern roughly
+This makes sense based on my code, as there is not a perfect work distribution and there is some slowdown from creating the threads and other small things.
+
+8. 1.89mil hashes/sec, for 13 threads (my CPU only has 12 cores and I'm virtualizing so its not gonna be very fast)
+
+9. keySize   HashesNeeded
+    1           26    
+    2           702
+    3           18.3k
+    4           475.2k
+    5           12.4mil
+    6           321.3mil
+    7           8.35bil
+    8           217bil
+
+10.  
+keySize = 7 : 4,417 seconds = 1.22 hours
+keySize = 8 : 114,815sec = 1.33 days
+
+This clearly shows how increasing key length can make security way higher as each added character makes brute forcing much harder
+
+11. 
+About 4 days
+
+12. No known bugs
+
+13. Extra Credit
+1 - Cracked Passwords:
+- salts
+- salts
+- salts
+- salts
+- salts
+- donot
+- skipp
+- anyyy
+- salts
+
+2. Password salts are useful because they prevent against precompuational attacks. If salts didnt exist, someone could just precompute and store every hash 
+and then save them in a search tree, which is way faster to search than trying to recompute all of the hashes every time. By adding salts, it makes storing 
+all of those hashes much harder, making security stronger.
